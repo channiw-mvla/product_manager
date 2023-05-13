@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ProductForm from './ProductForm';
 import AllProducts from './AllProducts';
-const Main = () => {
-    const [products, setProducts] = useState([])
+const Main = ({products,setProducts}) => {
+
   return (
     <div>
         <ProductForm products={products} setProducts={setProducts}/>
