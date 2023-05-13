@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-const ProductForm = () => {
+const ProductForm = ({products,setProducts}) => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState(""); 
     const [price, setPrice] = useState("");
-    const [description, setDescription] = useState("");
+    const [description, setDescription] = useState({});
 
     //handler when the form is submitted
     const onSubmitHandler = (e) => {
@@ -16,10 +16,7 @@ const ProductForm = () => {
             price,      // this is shortcut syntax for price: price
             description // this is shortcut syntax for description: description
         })
-        .then(res=>{
-            console.log(res); // always console log to get used to tracking your data!
-            console.log(res.data);
-        })
+        .then(res=> setProducts([...products,res.data]))
         .catch(err=>console.log(err))
     }
     
